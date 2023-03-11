@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 4800)
 @RequestMapping("/anuncios")
 public class AnuncioController {
 
@@ -24,7 +25,7 @@ public class AnuncioController {
     public ResponseEntity<List<Anuncio>> getAll(){
         return ResponseEntity.ok(anuncioService.getAll());
     }
-
+    
     //Mapeo GET => Devuelve anuncio pasando id
     @GetMapping("/{id}")
     public ResponseEntity<Anuncio> getOne(@PathVariable("id") int id) throws ResourceNotFoundException {
